@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Footer from './components/commons/Footer';
 import Header from './components/commons/Header';
-import Sidebar from './components/commons/Sidebar';
 import Main from './components/commons/Main';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -14,7 +12,9 @@ class App extends Component {
         <Router>
           <div>
             <Header/>
-            <Main/>
+              <div className="container">
+                <Main/>
+              </div>
             <Footer/>
           </div>
         </Router>
