@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -32,6 +33,8 @@ class ContactForm extends Component {
   }
 
   render() {
+    const { contactName, contactEmail, note } = this.state;
+    const { handleInputChange } = this;
     return (
       <div className="card">
         <form className="card-body" onSubmit={this.handleSubmit}>
@@ -42,18 +45,21 @@ class ContactForm extends Component {
               type="text"
               className="form-control"
               id="nameInput"
-              value={this.state.contactName}
-              onChange={this.handleInputChange} />
+              value={contactName}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="nameInput">Email:</label>
+            <label id="emailInputLabel" htmlFor="emailInput">Email:
+            </label>
             <input
               name="contactEmail"
               type="email"
               className="form-control"
-              id="nameInput"
-              value={this.state.contactEmail}
-              onChange={this.handleInputChange} />
+              id="emailInput"
+              value={contactEmail}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="note">Note:</label>
@@ -61,14 +67,19 @@ class ContactForm extends Component {
               name="note"
               className="form-control"
               id="note"
-              value={this.state.note}
-              onChange={this.handleInputChange} />
+              value={note}
+              onChange={handleInputChange}
+            />
           </div>
-          <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Submit"/>
+          <input
+            type="submit"
+            className="btn btn-secondary btn-lg btn-block"
+            value="Submit"
+          />
         </form>
       </div>
 
-    )
+    );
   }
 }
 
