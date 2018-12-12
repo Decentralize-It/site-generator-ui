@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+
 class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contactName: '',
       contactEmail: '',
-      note: ''
+      note: '',
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -14,26 +15,28 @@ class ContactForm extends Component {
   }
 
   handleInputChange(event) {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
+    const { target } = event;
+    const { name, value } = target;
 
 
     this.setState({
-      [name]: value
-    })
+      [name]: value,
+    });
   }
+
   handleSubmit(event) {
-    alert('Form was submitted ' + this.state.contactName + ' ' + this.state.contactEmail + ' ' + this.state.note)
-    this.props.history.push('/');
+    // alert('Form was submitted ' + this.state.contactName + ' ' + this.state.contactEmail + ' ' + this.state.note)
+    const { history } = this.props;
+    history.push('/');
     event.preventDefault();
   }
-  render(){
+
+  render() {
     return (
       <div className="card">
         <form className="card-body" onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label for="nameInput">Name:</label>
+            <label htmlFor="nameInput">Name:</label>
             <input
               name="contactName"
               type="text"
@@ -43,7 +46,7 @@ class ContactForm extends Component {
               onChange={this.handleInputChange} />
           </div>
           <div className="form-group">
-            <label for="nameInput">Email:</label>
+            <label htmlFor="nameInput">Email:</label>
             <input
               name="contactEmail"
               type="email"
@@ -53,14 +56,13 @@ class ContactForm extends Component {
               onChange={this.handleInputChange} />
           </div>
           <div className="form-group">
-            <label for="note">Note:</label>
+            <label htmlFor="note">Note:</label>
             <textarea
               name="note"
               className="form-control"
               id="note"
               value={this.state.note}
-              onChange={this.handleInputChange}>
-              </textarea>
+              onChange={this.handleInputChange} />
           </div>
           <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Submit"/>
         </form>
